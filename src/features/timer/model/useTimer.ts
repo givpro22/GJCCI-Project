@@ -5,6 +5,8 @@ export function useTimer() {
   const [remaining, setRemaining] = useState(0);
   const [running, setRunning] = useState(false);
   const [flash, setFlash] = useState(false);
+  const [halfFlash, setHalfFlash] = useState(false);
+  const [warningFlash, setWarningFlash] = useState(false);
   const beepRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -12,6 +14,12 @@ export function useTimer() {
     const id = setInterval(() => {
       setRemaining((r) => {
         const next = r - 1;
+        if (next === Math.floor(seconds / 2)) {
+          setHalfFlash(true);
+        }
+        if (next === 90) {
+          setWarningFlash(true);
+        }
         if (next <= 0) {
           setRunning(false);
           setFlash(true);
@@ -32,7 +40,7 @@ export function useTimer() {
       });
     }, 1000);
     return () => clearInterval(id);
-  }, [running, remaining]);
+  }, [running, remaining, seconds]);
 
   useEffect(() => {
     if (!flash) return;
@@ -42,7 +50,7 @@ export function useTimer() {
       document.body.style.backgroundColor =
         document.body.style.backgroundColor === 'red' ? originalBg : 'red';
       count++;
-      if (count >= 6) {
+      if (count >= 8) {
         clearInterval(id);
         document.body.style.backgroundColor = originalBg;
         setFlash(false);
@@ -53,6 +61,46 @@ export function useTimer() {
       document.body.style.backgroundColor = originalBg;
     };
   }, [flash]);
+
+  useEffect(() => {
+    if (!halfFlash) return;
+    const originalBg = document.body.style.backgroundColor;
+    let count = 0;
+    const id = setInterval(() => {
+      document.body.style.backgroundColor =
+        document.body.style.backgroundColor === 'blue' ? originalBg : 'blue';
+      count++;
+      if (count >= 8) {
+        clearInterval(id);
+        document.body.style.backgroundColor = originalBg;
+        setHalfFlash(false);
+      }
+    }, 500);
+    return () => {
+      clearInterval(id);
+      document.body.style.backgroundColor = originalBg;
+    };
+  }, [halfFlash]);
+
+  useEffect(() => {
+    if (!warningFlash) return;
+    const originalBg = document.body.style.backgroundColor;
+    let count = 0;
+    const id = setInterval(() => {
+      document.body.style.backgroundColor =
+        document.body.style.backgroundColor === 'green' ? originalBg : 'green';
+      count++;
+      if (count >= 8) {
+        clearInterval(id);
+        document.body.style.backgroundColor = originalBg;
+        setWarningFlash(false);
+      }
+    }, 500);
+    return () => {
+      clearInterval(id);
+      document.body.style.backgroundColor = originalBg;
+    };
+  }, [warningFlash]);
 
   const mmss = useMemo(() => {
     const m = Math.floor(remaining / 60)
