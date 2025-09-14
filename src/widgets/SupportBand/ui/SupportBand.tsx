@@ -4,18 +4,18 @@ export function SupportBand() {
       <div className='mx-auto grid max-w-6xl items-center gap-10 px-6 py-20 md:grid-cols-2'>
         <div>
           <h2 className='text-3xl font-extrabold leading-tight'>
-            휴쉼은 서로를 지지하고 격려하는
+            광주상공회의소 타이머
             <br />
-            고민 상담 커뮤니티예요.
+            시간 관리와 집중을 돕는 도구입니다.
           </h2>
           <p className='mt-5 text-lg leading-relaxed opacity-90'>
-            가벼운 걱정거리에서 상담사의 도움이 필요한 문제까지.
+            실시간 시계와 타이머 기능으로
             <br />
-            마음하나에 털어놓고 응원, 위로, 도움을 받아보세요.
+            학습과 업무 효율을 높여보세요.
           </p>
-          <p className='mt-6 text-xl font-bold'>혼자 고민하지 말아요. 해결할 수 있어요.</p>
+          <p className='mt-6 text-xl font-bold'>지금 바로 활용해서 생산성을 높이세요.</p>
           <a href='/guide' className='mt-8 inline-block underline underline-offset-4'>
-            마음하나 이렇게 활용해봐요. →
+            타이머 사용 가이드 보기 →
           </a>
         </div>
 
