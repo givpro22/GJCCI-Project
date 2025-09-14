@@ -1,11 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-// import { MorePostsButton } from '@/shared/ui';
-// import { FilterTabs } from '@/widgets/FilterTabs';
-// import { Footer } from '@/widgets/footer';
-import { HeroSection } from '@/widgets/HeroSection';
-// import { SupportBand } from '@/widgets/SupportBand';
 
-// 시간 도구 섹션: 네이버 시계 느낌의 실시간 시계 + 타이머
+import { HeroSection } from '@/widgets/HeroSection';
+
 function TimeTools() {
   return (
     <section className='mx-auto w-full max-w-5xl px-4 py-10'>
@@ -64,6 +60,7 @@ function TimerCard() {
   const [seconds, setSeconds] = useState(0); // 설정된 전체 초
   const [remaining, setRemaining] = useState(0); // 남은 초
   const [running, setRunning] = useState(false);
+  const [flash, setFlash] = useState(false);
   const beepRef = useRef<HTMLAudioElement>(null);
 
   // 카운트다운
@@ -75,6 +72,7 @@ function TimerCard() {
         if (next <= 0) {
           // 종료 처리
           setRunning(false);
+          setFlash(true);
           setTimeout(() => {
             if (beepRef.current) {
               try {
@@ -95,6 +93,26 @@ function TimerCard() {
     }, 1000);
     return () => clearInterval(id);
   }, [running, remaining]);
+
+  useEffect(() => {
+    if (!flash) return;
+    const originalBg = document.body.style.backgroundColor;
+    let count = 0;
+    const id = setInterval(() => {
+      document.body.style.backgroundColor =
+        document.body.style.backgroundColor === 'red' ? originalBg : 'red';
+      count++;
+      if (count >= 6) {
+        clearInterval(id);
+        document.body.style.backgroundColor = originalBg;
+        setFlash(false);
+      }
+    }, 500);
+    return () => {
+      clearInterval(id);
+      document.body.style.backgroundColor = originalBg;
+    };
+  }, [flash]);
 
   // 남은 시간 포맷
   const mmss = useMemo(() => {
