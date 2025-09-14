@@ -26,7 +26,7 @@ export function NaverLikeClock() {
   }, [now]);
 
   return (
-    <div className='rounded-xl border bg-white/70 p-6 shadow-sm backdrop-blur dark:bg-neutral-900/70'>
+    <div className='flex min-h-[240px] flex-col items-center justify-center rounded-xl border bg-white/70 p-8 text-center shadow-sm backdrop-blur dark:bg-neutral-900/70'>
       <div className='text-sm text-neutral-500 dark:text-neutral-400'>대한민국 표준시 (KST)</div>
       <div className='mt-2 text-xl font-medium'>
         {dateStr} · {weekdayStr}
