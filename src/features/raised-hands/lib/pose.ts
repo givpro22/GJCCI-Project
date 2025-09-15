@@ -7,9 +7,9 @@ export async function createPoseLandmarker() {
     baseOptions: { modelAssetPath: POSE_TASK_URL },
     runningMode: 'VIDEO',
     numPoses: 10,
-    minPoseDetectionConfidence: 0.5,
-    minPosePresenceConfidence: 0.5,
-    minTrackingConfidence: 0.5,
+    minPoseDetectionConfidence: 0.25,
+    minPosePresenceConfidence: 0.25,
+    minTrackingConfidence: 0.25,
   });
   return landmarker;
 }
