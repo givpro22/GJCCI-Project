@@ -1,3 +1,4 @@
+import RaisedHandsCanvas from '@/features/raised-hands/ui/RaisedHandsCanvas';
 import { Outlet } from 'react-router-dom';
 // import { Footer } from '@/widgets/footer';
 // import { Separator } from '@/shared/ui/shadcn/separator';
@@ -11,6 +12,8 @@ export default function AppLayout() {
     <>
       {isLoggedIn ? (
         <>
+          <RaisedHandsCanvas />
+
           {/* <HeaderGuest />
           <Separator /> */}
           <Outlet />
