@@ -31,6 +31,13 @@ export function TimerCard() {
           </button>
           <button
             type='button'
+            onClick={() => setPreset(60)}
+            className='rounded-md border px-3 py-1.5 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800'
+          >
+            필기 (60분)
+          </button>
+          <button
+            type='button'
             onClick={setCustom}
             className='rounded-md border px-3 py-1.5 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800'
           >

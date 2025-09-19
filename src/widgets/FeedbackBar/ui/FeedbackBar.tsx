@@ -16,8 +16,8 @@ export function FeedbackBar() {
         </p>
         <Separator className='mb-2 mt-2' />
         <p>
-          <span className='font-medium'>노순영</span> (2025.09.18): 시계가 네이버 시간보다 빨라요
-          ㅠㅠ → <span className='font-semibold text-yellow-400'>진행 중</span>
+          <span className='font-medium'>익명</span> (2025.09.18): 시계가 네이버 시간보다 빨라요 ㅠㅠ
+          → <span className='font-semibold text-yellow-400'>진행 중</span>
         </p>
       </div>
     </section>
