@@ -8,7 +8,7 @@ export function HeroSection() {
         </h1>
         <div className='mt-5 flex flex-col items-center gap-2'>
           <a
-            href='https://gjcci-next-4km4v2xhz-youngseos-projects-83ff578b.vercel.app/'
+            href='https://gjcci-next.vercel.app/'
             target='_blank'
             rel='noopener noreferrer'
             className='bg-primary focus-visible:ring-primary/40 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
